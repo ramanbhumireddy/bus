@@ -10,7 +10,7 @@ services:
       - MYSQL_PASSWORD=testuser@123
 
   bus-app:
-    image: bus:v3
+    image: bus:v2
     build:
       context: ./
       dockerfile: Dockerfile
