@@ -7,14 +7,14 @@ pipeline {
     }
 
     environment {
-        JAVA_HOME = tool('JDK_21')
-        PATH = "${JAVA_HOME}/bin:${env.PATH}"
+        //JAVA_HOME = tool('JDK_21')
+        //PATH = "${JAVA_HOME}/bin:${env.PATH}"
     }
 
     stages {
         stage('Clone') {
             steps {
-                git 'https://github.com/ramanbhumireddy/bus.git'
+                git branch: 'main', url: 'https://github.com/ramanbhumireddy/bus.git'
             }
         }
 
