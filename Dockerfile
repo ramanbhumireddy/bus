@@ -13,4 +13,5 @@ EXPOSE 8084
 ENV JAVA_OPTS="-Xms1g -Xmx1g"
 
 # Define the command to run the Spring Boot application
-ENTRYPOINT ["java","$JAVA_OPTS", "-jar", "/app/bus.jar"]
+#ENTRYPOINT ["java","$JAVA_OPTS", "-jar", "/app/bus.jar"]  // exception when heap increased by env variable
+ENTRYPOINT java $JAVA_OPTS -jar /app/bus.jar
