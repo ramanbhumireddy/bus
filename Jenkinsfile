@@ -41,7 +41,7 @@ pipeline {
         stage('DockerImage') {
             steps {
                 script{
-                    withDockerRegistry(credentialsId: 'docker_hub_creds_unm_pwd', toolName: 'docker') {
+                    withDockerRegistry(credentialsId: 'github_creds_unm_pwd', toolName: 'docker') {
                         sh "docker build -t bus:latest -f docker/bus/Jenkinsfile ."
                     }
                 }
