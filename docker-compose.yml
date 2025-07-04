@@ -1,0 +1,9 @@
+version: '3.8'
+
+services:
+  bus-app:
+    image: bus:v2
+    container_name: bus
+    ports:
+      - "8084:8081"  # Maps host 8084 to container’s internal 8080
+    restart: unless-stopped
