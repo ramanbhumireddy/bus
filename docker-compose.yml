@@ -8,15 +8,16 @@ services:
       - MYSQL_DATABASE=test
       - MYSQL_USER=testuser
       - MYSQL_PASSWORD=testuser@123
-    bus-app:
-      image: bus:v3
-      ports:
-        - 8084:8081
-      build:
-        context: ./
-        dockerfile: Dockerfile
-      depends_on:
-        - mysql-standalone
+
+  bus-app:
+    image: bus:v3
+    build:
+      context: ./
+      dockerfile: Dockerfile
+    ports:
+      - "8084:8081"
+    depends_on:
+      - mysql-standalone
 #  bus-app:
 #    image: bus:v2
 #    container_name: bus
