@@ -1,2 +1,17 @@
 server:
   port: 8081
+
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://mysql-standalone:3306/test?useSSL=false
+    username: root
+    password: rootx
+    hikari:
+      initialization-fail-timeout: 0
+
+  jpa:
+    generate-ddl: true
+    show-sql: true
+    hibernate:
+      ddl-auto: update

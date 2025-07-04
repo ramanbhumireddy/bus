@@ -1,9 +1,25 @@
 version: '3.8'
 
 services:
-  bus-app:
-    image: bus:v2
-    container_name: bus
-    ports:
-      - "8084:8081"  # Maps host 8084 to container’s internal 8080
-    restart: unless-stopped
+  mysql-standalone:
+    image: mysql:5.7
+    environment:
+      - MYSQL_ROOT_PASSWORD=rootx
+      - MYSQL_DATABASE=test
+      - MYSQL_USER=testuser
+      - MYSQL_PASSWORD=testuser@123
+    bus-app:
+      image: bus:v3
+      ports:
+        - 8084:8081
+      build:
+        context: ./
+        dockerfile: Dockerfile
+      depends_on:
+        - mysql-standalone
+#  bus-app:
+#    image: bus:v2
+#    container_name: bus
+#    ports:
+#      - "8084:8081"  # Maps host 8084 to container’s internal 8080
+#    restart: unless-stopped
