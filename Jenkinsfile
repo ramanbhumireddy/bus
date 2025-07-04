@@ -6,8 +6,6 @@ pipeline {
         gradle 'gradle_9.0.0'   // Likewise, match the name of your configured Gradle version
     }
 
-
-
     stages {
         stage('Clone') {
             steps {
@@ -17,6 +15,7 @@ pipeline {
 
         stage('Build') {
             steps {
+                sh 'chmod +x gradlew'
                 sh './gradlew clean build'
             }
         }
