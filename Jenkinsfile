@@ -6,10 +6,7 @@ pipeline {
         gradle 'gradle_9.0.0'   // Likewise, match the name of your configured Gradle version
     }
 
-    environment {
-        //JAVA_HOME = tool('JDK_21')
-        //PATH = "${JAVA_HOME}/bin:${env.PATH}"
-    }
+
 
     stages {
         stage('Clone') {
