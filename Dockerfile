@@ -7,8 +7,9 @@ WORKDIR /app
 # Replace 'your-application.jar' with the actual name of your built JAR fileCOPY build/libs/bus.jar bus.jar
 COPY build/libs/bus.jar bus.jar
 
-# Expose the port your Spring Boot application listens on (default is 8080)
-EXPOSE 8084
+# "8084:8081" means (out size use)host:container (internal springboot) port
+# if your Spring Boot app runs on port 8081 (container not host)  (via application.properties):
+EXPOSE 8081
 
 ENV JAVA_OPTS="-Xms1g -Xmx1g"
 
