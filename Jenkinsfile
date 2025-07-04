@@ -38,6 +38,13 @@ pipeline {
             }
         }
 
+
+        stage('Docker Version') {
+                    steps {
+                        sh 'docker --version'
+                    }
+        }
+
         stage('DockerImage') {
             steps {
                 script{
