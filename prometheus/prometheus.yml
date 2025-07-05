@@ -1,0 +1,17 @@
+global:
+  scrape_interval: 10s
+  evaluation_interval: 10s
+
+scrape_configs:
+  - job_name: 'prometheus'
+    # metrics_path defaults to '/metrics'
+    # scheme defaults to 'http'.
+    static_configs:
+      - targets: ['prometheus:9090']
+
+  - job_name: 'bus_app'
+    metrics_path: '/actuator/prometheus'
+    static_configs:
+      - targets: ['bus-bus-app-1:8084']
+        labels:
+          application: 'Bus Service Application'

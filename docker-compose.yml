@@ -10,17 +10,36 @@ services:
       - MYSQL_PASSWORD=testuser@123
 
   bus-app:
-    image: bus:v1
+    image: bus:v2
     build:
       context: ./
       dockerfile: Dockerfile
     ports:
-      - "8084:8081"
+      - "8084:8084"
     depends_on:
       - mysql-standalone
-#  bus-app:
-#    image: bus:v2
-#    container_name: bus
-#    ports:
-#      - "8084:8081"  # Maps host 8084 to container’s internal 8080
-#    restart: unless-stopped
+
+  prometheus:
+    image: prom/prometheus:v2.37.1
+    container_name: prometheus
+    restart: always
+    ports:
+      - "9090:9090"
+    volumes:
+      - ./prometheus/prometheus.yml:/etc/prometheus/prometheus.yml
+    depends_on:
+      - bus-app
+
+  grafana:
+    image: grafana/grafana-oss:8.5.2
+    container_name: grafana
+    restart: always
+    ports:
+      - "3000:3000"
+    links:
+      - prometheus:prometheus
+    volumes:
+      - ./grafana:/var/lib/grafana
+    environment:
+      - GF_SECURITY_ADMIN_USER=admin
+      - GF_SECURITY_ADMIN_PASSWORD=password

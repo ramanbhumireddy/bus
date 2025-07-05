@@ -9,7 +9,8 @@ COPY build/libs/bus.jar bus.jar
 
 # "8084:8081" means (out size use)host:container (internal springboot) port
 # if your Spring Boot app runs on port 8081 (container not host)  (via application.properties):
-EXPOSE 8081
+#EXPOSE 8081
+EXPOSE 8084
 
 ENV JAVA_OPTS="-Xms1g -Xmx1g"
 
